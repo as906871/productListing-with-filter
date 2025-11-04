@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./component/Product/Home";
+import ProductDetail from "./component/Product/ProductDetail";
+import CartPage from "./component/cart/cartPage";
+import CartDrawer from "./component/cart/CartDrawer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white shadow sticky top-0 z-20">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link to="/" className="text-2xl font-bold">
+            Store
+          </Link>
+          <CartDrawer />
+        </div>
       </header>
+
+      <main className="container mx-auto px-4 py-6">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
+      </main>
+
+      <footer className="text-center py-6 text-sm text-gray-500 border-t mt-12">
+        © {new Date().getFullYear()} Store. All rights reserved.
+      </footer>
     </div>
   );
 }
