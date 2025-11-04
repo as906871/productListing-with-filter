@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Home from "./component/Product/Home";
 import ProductDetail from "./component/Product/ProductDetail";
 import CartPage from "./component/cart/cartPage";
@@ -22,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
 

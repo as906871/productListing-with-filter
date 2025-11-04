@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/reducer/cartSlice";
+import { ShoppingCart, SquareCheckBig } from "lucide-react";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -29,16 +30,17 @@ const ProductCard = ({ product }) => {
       {inCart ? (
         <Link
           to="/cart"
-          className="mt-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg px-3 py-2 text-center transition"
+          className="mt-3 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg px-4 py-2 transition-all duration-200 shadow-sm"
         >
-          Go to Cart
+          <SquareCheckBig size={18} className="mb-[1px]"/> Go to Cart
+          
         </Link>
       ) : (
         <button
           onClick={() => dispatch(addToCart(product))}
-          className="mt-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-3 py-2 transition"
+           className="mt-3 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-4 py-2 transition-all duration-200 shadow-sm"
         >
-          Add to Cart
+          <ShoppingCart size={18} className="mb-[1px]" /> Add to Cart
         </button>
       )}
     </div>
